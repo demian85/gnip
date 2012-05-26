@@ -1,7 +1,9 @@
 gnip
 ====
 
-Connect to Gnip streaming API and manage rules
+Connect to Gnip streaming API and manage rules.
+
+The current tracking rules are stored in a local JSON file so you can update the existing rules efficiently without having to remove them all.
 
 Example Usage
 ====
@@ -22,11 +24,7 @@ Example Usage
 		console.error(err);
 	});
 
-	var rules = new Gnip.Rules({
-		url : 'https://api.gnip.com:443/accounts/xxx/publishers/twitter/streams/track/prod/rules.json',
-		username : 'xxx',
-		password : 'xxx'
-	});
+	var rules = new Gnip.Rules('https://api.gnip.com:443/accounts/xxx/publishers/twitter/streams/track/prod/rules.json', 'xxx', 'xxx');
 
 	rules.update(['#hashtag', 'keyword', '@user'], function(err) {
 		if (err) throw err;
@@ -35,4 +33,12 @@ Example Usage
 
 API methods
 ====
-Coming soon...
+	rules.getAll(Function callback)
+	rules.update(Array rules, Function callback)
+	rules.live.update(Array rules, Function callback)
+	rules.live.add(Array rules, Function callback)
+	rules.live.remove(Array rules, Function callback)
+	rules.live.getAll(Function callback)
+	rules.live.removeAll(Function callback)
+
+More details and tests soon...
