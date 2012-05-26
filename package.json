@@ -1,0 +1,15 @@
+{
+  "author": "Demián Rodriguez",
+  "name": "gnip",
+  "description": "Connect to Gnip streaming API and manage rules",
+  "version": "0.1.0",
+  "main": "./lib/index.js",
+  "engines": {
+    "node": ">=0.6"
+  },
+  "dependencies": {
+	  "request" : ">=2.9.100",
+	  "async" : ">=0.1.1"
+  },
+  "devDependencies": {}
+}
