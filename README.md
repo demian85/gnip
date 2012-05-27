@@ -51,6 +51,10 @@ Clears cached rules.
 #### rules.live.removeAll(Function callback)
 
 
+Installation
+====
+	npm install gnip
+
 Example Usage
 ====
 	var Gnip = require('gnip');
