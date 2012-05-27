@@ -40,7 +40,10 @@ Creates or replaces the live tracking rules.
 Rules are sent in batches of 5000 (API limit), so you can pass an unlimited number of rules.  
 The current tracking rules are stored in a local JSON file so you can update the existing rules efficiently without having to remove them all.
 
-**The following methods uses Gnip API directly and ignores the local cache. Avoid when possible.**
+#### rules.clearCache(Function callback)
+Clears cached rules.
+
+### The following methods uses Gnip API directly and ignores the local cache. Avoid usage if you are working with too many rules!
 #### rules.live.update(Array rules, Function callback)
 #### rules.live.add(Array rules, Function callback)
 #### rules.live.remove(Array rules, Function callback)
