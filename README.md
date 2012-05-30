@@ -1,4 +1,4 @@
-gnip
+NodeJS Gnip module
 ====
 
 Connect to Gnip streaming API and manage rules. 
