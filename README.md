@@ -46,6 +46,7 @@ Get cached rules.
 Creates or replaces the live tracking rules.  
 Rules are sent in batches of 5000 (API limit), so you can pass an unlimited number of rules.  
 The current tracking rules are stored in a local JSON file so you can update the existing rules efficiently without having to remove them all.
+The callback receives an object as the 2nd argument and contains the number of added and deleted rules.
 
 #### rules.clearCache(Function callback)
 Clears cached rules.
