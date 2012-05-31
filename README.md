@@ -88,7 +88,15 @@ Example Usage
 		password : 'xxx'
 	});
 
-	rules.update(['#hashtag', 'keyword', '@user'], function(err) {
+	var newRules = [
+		'#hashtag', 
+		'keyword', 
+		'@user',
+		{value: 'keyword as object'},
+		{value: '@demianr85', tag: 'rule tag'}
+	];
+
+	rules.update(newRules, function(err) {
 		if (err) throw err;
 		stream.start();
 	});
