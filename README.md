@@ -24,15 +24,15 @@ Emitted when the connection has been successfully established
 ###### data
 Emitted for each data chunk (decompressed)
 ###### error
-Emitted when any type of error occurs. An error is raised if the response status code is not 20x
+Emitted when any type of error occurs. An error is raised if the response status code is not 20x. {error: String} objects are also checked here.
 ###### object
-Emitted for each JSON object. {error: String} objects must be checked here
+Emitted for each JSON object.
 ###### tweet
-Emitted for each tweet
+Emitted for each tweet.
 ###### delete
-Emitted for each deleted tweet
+Emitted for each deleted tweet.
 ###### end
-Emitted when the connection is terminated. This event is always emitted when an error occurs.
+Emitted when the connection is terminated. This event is always emitted when an error occurs and the connection is closed.
 
 # Gnip.Rules
 This class allows you to manage an unlimited number of tracking rules.
