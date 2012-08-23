@@ -1,3 +1,4 @@
+[![build status](https://secure.travis-ci.org/demian85/gnip.png)](http://travis-ci.org/demian85/gnip)
 NodeJS Gnip module
 ====
 
