@@ -70,7 +70,8 @@ Example Usage
 	var stream = new Gnip.Stream({
 		url : 'https://stream.gnip.com:443/accounts/xxx/publishers/twitter/streams/track/prod.json',
 		user : 'xxx',
-		password : 'xxx'
+		password : 'xxx',
+        client: xxx // optional
 	});
 	stream.on('ready', function() {
 		console.log('Stream ready!');
