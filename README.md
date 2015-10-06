@@ -44,7 +44,7 @@ Get cached rules.
 
 #### rules.update(Array rules, Function callback)
 Creates or replaces the live tracking rules.  
-Rules are sent in batches of 5000 (API limit), so you can pass an unlimited number of rules.  
+Rules are sent in batches of `options.batch_size`, so you can pass an unlimited number of rules.  
 The current tracking rules are stored in a local JSON file so you can update the existing rules efficiently without having to remove them all.
 The callback receives an object as the 2nd argument and contains the number of added and deleted rules.
 
@@ -86,7 +86,8 @@ Example Usage
 	var rules = new Gnip.Rules({
 		url : 'https://api.gnip.com:443/accounts/xxx/publishers/twitter/streams/track/prod/rules.json',
 		user : 'xxx',
-		password : 'xxx'
+		password : 'xxx',
+		batch_size: 1234 // not required, defaults to 5000
 	});
 
 	var newRules = [
