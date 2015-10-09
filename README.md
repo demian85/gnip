@@ -9,6 +9,12 @@ Currenly, this module only supports JSON activity stream format, so you must ena
 # Gnip.Stream
 This class is an EventEmitter and allows you to connect to the stream and start receiving data.
 
+## Constructor options
+
+#### options.timeout
+As requested in the Gnip docs (http://support.gnip.com/apis/powertrack/api_reference.html), this option in the constructor allows us to set a read timeout in the client. The recommended a value is >=30 seconds, so the constructor will throw an error if a smaller timeout is provided. The default value for this option is 35 seconds.
+
+
 ## API methods
 
 #### stream.start()
