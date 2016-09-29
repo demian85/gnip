@@ -74,10 +74,10 @@ Example Usage
 	var Gnip = require('gnip');
 
 	var stream = new Gnip.Stream({
-		url : 'https://stream.gnip.com:443/accounts/xxx/publishers/twitter/streams/track/prod.json',
+		url : 'https://gnip-stream.twitter.com/stream/powertrack/accounts/xxx/publishers/twitter/prod.json',
 		user : 'xxx',
 		password : 'xxx',
-        client: xxx // optional
+		backfillMinutes: 5 // optional
 	});
 	stream.on('ready', function() {
 		console.log('Stream ready!');
@@ -90,10 +90,10 @@ Example Usage
 	});
 
 	var rules = new Gnip.Rules({
-		url : 'https://api.gnip.com:443/accounts/xxx/publishers/twitter/streams/track/prod/rules.json',
+		url : 'https://gnip-api.twitter.com/rules/powertrack/accounts/xxx/publishers/twitter/prod.json',
 		user : 'xxx',
 		password : 'xxx',
-		batchSize: 1234 // not required, defaults to 5000
+		batchSize: 1234, // not required, defaults to 5000
 	});
 
 	var newRules = [
