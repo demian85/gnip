@@ -14,6 +14,8 @@ This class is an EventEmitter and allows you to connect to the stream and start 
 #### options.timeout
 As requested in the Gnip docs (http://support.gnip.com/apis/powertrack/api_reference.html), this option in the constructor allows us to set a read timeout in the client. The recommended value is >=30 seconds, so the constructor will throw an error if a smaller timeout is provided. The default value for this option is 35 seconds.
 
+#### options.backfillMinutes
+Number of minutes to backfill after connecting to the stream. Optional. Value should be 0 - 5.
 
 ## API methods
 
