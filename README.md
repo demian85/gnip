@@ -17,6 +17,9 @@ As requested in the Gnip docs (http://support.gnip.com/apis/powertrack/api_refer
 #### options.backfillMinutes
 Number of minutes to backfill after connecting to the stream. Optional. Value should be 0 - 5.
 
+#### options.partition
+Partition of the Firehose stream you want to connect to. Only required for Firehose streams.
+
 ## API methods
 
 #### stream.start()
