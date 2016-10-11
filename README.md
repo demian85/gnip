@@ -20,6 +20,19 @@ Number of minutes to backfill after connecting to the stream. Optional. Value sh
 #### options.partition
 Partition of the Firehose stream you want to connect to. Only required for Firehose streams.
 
+#### options.parser
+Parser library for incoming JSON data. Optional, defaults to the native JSON parser.  
+Matching tag IDs are sent to us as big integers which can't be reliably parsed by the native JSON library in Node.js. When you rely on tag IDs you can use the excellent [json-bigint](https://www.npmjs.com/package/json-bigint) library:
+
+```
+var JSONbig = require('json-bigint');
+var stream = new Gnip.Stream({
+	parser: JSONbig,
+	...
+});
+```
+More info on this issue can be found at [StackOverflow](http://stackoverflow.com/questions/8663298/json-transfer-of-bigint-12000000000002539-is-converted-to-12000000000002540)
+
 ## API methods
 
 #### stream.start()
