@@ -96,6 +96,15 @@ Username for authentication.
 #### options.password
 Password for authentication.
 
+Example:
+```js
+var usage = new Gnip.Usage({
+	url : 'https://gnip-api.twitter.com/metrics/usage/accounts/{ACCOUNT_NAME}.json',
+	user : 'xxx',
+	password : 'xxx'
+});
+```
+
 ## API Methods
 
 #### usage.get(Function callback)
