@@ -82,6 +82,34 @@ Clears cached rules.
 #### rules.live.getAll(Function callback)
 #### rules.live.removeAll(Function callback)
 
+# Gnip.Usage
+This class allows you to track activity consumption across Gnip products.
+
+## Constructor options
+
+#### options.url
+GNIP API url, e.g: https://gnip-api.twitter.com/metrics/usage/accounts/{ACCOUNT_NAME}.json
+
+#### options.user
+Username for authentication.
+
+#### options.password
+Password for authentication.
+
+## API Methods
+
+#### usage.get(Function callback)
+Error passed as first parameter to callback, result as second.
+
+#### usage.get(Object parameters, Function callback)
+<a href="http://support.gnip.com/apis/usage_api/api_reference.html#GETData">Information on request parameters can be found here.</a>
+
+```js
+usage.get({ bucket:'day', fromDate:'201612010000', toDate:'201612100000' },function( err, body )
+{
+	...
+});
+````
 
 Installation
 ====
