@@ -82,6 +82,56 @@ Clears cached rules.
 #### rules.live.getAll(Function callback)
 #### rules.live.removeAll(Function callback)
 
+# Gnip.Search
+This class is an EventEmitter and allows you to connect to either the 30 day or full archive search API and start receiving data.
+
+## Constructor options
+
+#### options.user
+GNIP account username.
+
+#### options.password
+GNIP account password.
+
+#### options.url
+GNIP Search endpoint url e.g. ```https://gnip-api.twitter.com/search/30day/accounts/{ACCOUNT_NAME}/{LABEL}.json```
+
+#### options.query
+Rule to match tweets.
+
+#### options.fromDate
+The oldest date from which tweets will be gathered. Date given in the format 'YYYYMMDDHHMM'. Optional.
+
+#### options.toDate
+The most recent date to which tweets will be gathered. Date given in the format 'YYYYMMDDHHMM'. Optional.
+
+#### options.maxResults
+The maximum number of search results to be returned by a request. A number between 10 and 500. Optional.  
+
+#### options.tag
+Used to segregate rules and their matching data into different logical groups. Optional.
+
+## API methods
+
+#### stream.start()
+Start receiving data. At this point you should have registered at least one event listener for 'object' or 'tweet'.
+
+#### stream.end()
+Terminates the connection.
+
+## Events
+
+###### ready
+Emitted when tweets have started to be collected.
+###### error
+Emitted when a recoverable (non fatal) error occurs. 
+###### object
+Emitted for each JSON object.
+###### tweet
+Emitted for each tweet.
+###### end
+Emitted when the connection is terminated. If the stream has ended due to a fatal error, the error object will be passed.
+
 # Gnip.Usage
 This class allows you to track activity consumption across Gnip products.
 
@@ -163,5 +213,25 @@ Example Usage
 		if (err) throw err;
 		stream.start();
 	});
+	
+	var search = new Gnip.Search({
+		url : 'https://gnip-stream.twitter.com/stream/powertrack/accounts/xxx/publishers/twitter/prod.json',
+		user : 'xxx',
+		password : 'xxx',
+		query : '@user'
+	});
+	
+	search.on('tweet', function(tweet) {
+		console.log(tweet);
+	});
 
+	search.on('error', function(err) {
+		console.error(err);
+	});
+	
+	search.on('end', function(err) {
+		if( err ) 
+			console.error(err);
+	});
+	
 More details and tests soon...
