@@ -111,6 +111,9 @@ The maximum number of search results to be returned by a request. A number betwe
 #### options.tag
 Used to segregate rules and their matching data into different logical groups. Optional.
 
+#### options.bucket
+The unit of time for which count data will be provided. Options: "day", "hour", "minute". Optional, for /counts calls.
+
 ## API methods
 
 #### stream.start()
@@ -232,6 +235,20 @@ Example Usage
 	search.on('end', function(err) {
 		if( err ) 
 			console.error(err);
+	});
+	
+	// search counts usage
+	var counts = new Gnip.Search({
+		url : 'https://gnip-stream.twitter.com/stream/powertrack/accounts/xxx/publishers/twitter/prod/counts.json',
+		user : 'xxx',
+		password : 'xxx',
+		query : '@user',
+		bucket: 'day'
+	});
+	
+	counts.on('object', function(object) {
+		console.log(object.results);
+		counts.end();
 	});
 	
 More details and tests soon...
