@@ -114,6 +114,9 @@ Used to segregate rules and their matching data into different logical groups. O
 #### options.bucket
 The unit of time for which count data will be provided. Options: "day", "hour", "minute". Optional, for /counts calls.
 
+#### options.rateLimiter
+A <a href="https://www.npmjs.com/package/limiter">limiter</a> object, used to control the rate of collection. Optional. If unspecified, a rate limit of 10 requests a second will be shared between Search streams. If you have a non-standard rate limit, you should pass this parameter.
+
 ## API methods
 
 #### stream.start()
