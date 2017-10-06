@@ -21,17 +21,8 @@ Number of minutes to backfill after connecting to the stream. Optional. Value sh
 Partition of the Firehose stream you want to connect to. Only required for Firehose streams.
 
 #### options.parser
-Parser library for incoming JSON data. Optional, defaults to the native JSON parser.  
-Matching tag IDs are sent to us as big integers which can't be reliably parsed by the native JSON library in Node.js. When you rely on tag IDs you can use the excellent [json-bigint](https://www.npmjs.com/package/json-bigint) library:
-
-```
-var JSONbig = require('json-bigint');
-var stream = new Gnip.Stream({
-	parser: JSONbig,
-	...
-});
-```
-More info on this issue can be found at [StackOverflow](http://stackoverflow.com/questions/8663298/json-transfer-of-bigint-12000000000002539-is-converted-to-12000000000002540)
+Parser library for incoming JSON data. Optional, but defaults to the the excellent [json-bigint](https://www.npmjs.com/package/json-bigint) library.  
+Matching tag IDs are sent to us as big integers which can't be reliably parsed by the native JSON library in Node.js. More info on this issue can be found at [StackOverflow](http://stackoverflow.com/questions/8663298/json-transfer-of-bigint-12000000000002539-is-converted-to-12000000000002540)
 
 ## API methods
 
@@ -76,7 +67,7 @@ GNIP Rules endpoint url e.g. `https://gnip-api.twitter.com/rules/${streamType}/a
 The batch size used when adding/deleting rules in bulk. (Defaults to 5000)
 
 #### options.parser
-Much like the `parser` option allowed in the [Gnip Stream](https://github.com/demian85/gnip#gnipstream) constructor, you can pass a custom parser handler/library for incoming JSON data. This is optional, and defaults to the native `JSON` parser. [More details](https://github.com/demian85/gnip#optionsparser).
+Much like the `parser` option allowed in the [Gnip Stream](https://github.com/demian85/gnip#gnipstream) constructor, you can pass a custom parser handler/library for incoming JSON data. This is optional, and defaults to the [json-bigint](https://www.npmjs.com/package/json-bigint) library. [More details](https://github.com/demian85/gnip#optionsparser).
 
 ## API methods
 
@@ -197,7 +188,6 @@ Installation
 Example Usage
 ====
 	var Gnip = require('gnip');
-	var JSONBigInt = require('json-bigint');
 
 	var stream = new Gnip.Stream({
 		url : 'https://gnip-stream.twitter.com/stream/powertrack/accounts/xxx/publishers/twitter/prod.json',
@@ -219,8 +209,7 @@ Example Usage
 		url : 'https://gnip-api.twitter.com/rules/powertrack/accounts/xxx/publishers/twitter/prod.json',
 		user : 'xxx',
 		password : 'xxx',
-		batchSize: 1234, // not required, defaults to 5000
-		parser: JSONBigInt // required in order to properly parse large integral rule IDs
+		batchSize: 1234 // not required, defaults to 5000
 	});
 
 	var newRules = [
