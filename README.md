@@ -61,6 +61,23 @@ Emitted when the connection is terminated. This event is always emitted when an 
 # Gnip.Rules
 This class allows you to manage an unlimited number of tracking rules.
 
+## Constructor options
+
+#### options.user
+GNIP account username.
+
+#### options.password
+GNIP account password.
+
+#### options.url
+GNIP Rules endpoint url e.g. `https://gnip-api.twitter.com/rules/${streamType}/accounts/${account}/publishers/twitter/${label}.json`
+
+#### options.batchSize
+The batch size used when adding/deleting rules in bulk. (Defaults to 5000)
+
+#### options.parser
+Much like the `parser` option allowed in the [Gnip Stream](https://github.com/demian85/gnip#gnipstream) constructor, you can pass a custom parser handler/library for incoming JSON data. This is optional, and defaults to the native `JSON` parser. [More details](https://github.com/demian85/gnip#optionsparser).
+
 ## API methods
 
 #### rules.getAll(Function callback)
@@ -183,6 +200,7 @@ Installation
 Example Usage
 ====
 	var Gnip = require('gnip');
+	var JSONBigInt = require('json-bigint');
 
 	var stream = new Gnip.Stream({
 		url : 'https://gnip-stream.twitter.com/stream/powertrack/accounts/xxx/publishers/twitter/prod.json',
@@ -205,6 +223,7 @@ Example Usage
 		user : 'xxx',
 		password : 'xxx',
 		batchSize: 1234, // not required, defaults to 5000
+		parser: JSONBigInt // required in order to properly parse large integral rule IDs
 	});
 
 	var newRules = [
