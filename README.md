@@ -24,7 +24,7 @@ Partition of the Firehose stream you want to connect to. Only required for Fireh
 Parser library for incoming JSON data. Optional, defaults to the native JSON parser.  
 Matching tag IDs are sent to us as big integers which can't be reliably parsed by the native JSON library in Node.js. When you rely on tag IDs you can use the excellent [json-bigint](https://www.npmjs.com/package/json-bigint) library:
 
-```
+```js
 var JSONbig = require('json-bigint');
 var stream = new Gnip.Stream({
 	parser: JSONbig,
@@ -132,8 +132,18 @@ Used to segregate rules and their matching data into different logical groups. O
 The unit of time for which count data will be provided. Options: "day", "hour", "minute". Optional, for /counts calls.
 
 #### options.rateLimiter
-A <a href="https://www.npmjs.com/package/limiter">limiter</a> object, used to control the rate of collection. Optional. If unspecified, a rate limit of 10 requests a second will be shared between Search streams. If you have a non-standard rate limit, you should pass this parameter.
+A <a href="https://www.npmjs.com/package/limiter">limiter</a> object, used to control the rate of collection. Optional. If unspecified, a rate limit of 30 requests a minute will be shared between Search streams. If you have a non-standard rate limit, you should pass this parameter.
 
+```js
+var RateLimiter = require('limiter').RateLimiter;
+// Allow 60 requests per minute
+var limiter = new RateLimiter(60, 'minute');
+
+var stream = new _gnip.Search({
+	rateLimiter : limiter,
+  ...
+});
+```
 ## API methods
 
 #### stream.start()
