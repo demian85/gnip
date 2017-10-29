@@ -1,5 +1,5 @@
-var Gnip = require('gnip'),
-  async = require('async');
+var Gnip = require('./lib/index');
+var async = require('async');
 
 var stream = new Gnip.Stream({
   url: 'https://stream.gnip.com:443/accounts/xxx/publishers/twitter/streams/track/dev.json',
