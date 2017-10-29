@@ -21,7 +21,7 @@ Number of minutes to backfill after connecting to the stream. Optional. Value sh
 Partition of the Firehose stream you want to connect to. Only required for Firehose streams.
 
 #### options.parser
-Parser library for incoming JSON data. Optional, but defaults to the the excellent [json-bigint](https://www.npmjs.com/package/json-bigint) library.  
+Parser library for incoming JSON data. Optional, but defaults to the excellent [json-bigint](https://www.npmjs.com/package/json-bigint) library.  
 Matching tag IDs are sent to us as big integers which can't be reliably parsed by the native JSON library in Node.js. More info on this issue can be found at [StackOverflow](http://stackoverflow.com/questions/8663298/json-transfer-of-bigint-12000000000002539-is-converted-to-12000000000002540)
 
 ## API methods
