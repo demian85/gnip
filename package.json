@@ -1,6 +1,6 @@
 {
   "author": {
-    "name": "Demián Rodriguez",
+    "name": "Demian Andres Rodriguez",
     "email": "demian85@gmail.com"
   },
   "contributors": [
@@ -15,7 +15,7 @@
   ],
   "name": "gnip",
   "description": "Connect to Gnip streaming API and manage rules",
-  "version": "1.4.1",
+  "version": "2.0.0",
   "keywords": [
     "gnip",
     "stream",
