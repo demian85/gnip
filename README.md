@@ -122,6 +122,19 @@ Used to segregate rules and their matching data into different logical groups. O
 #### options.bucket
 The unit of time for which count data will be provided. Options: "day", "hour", "minute". Optional, for /counts calls.
 
+#### options.rateLimiter
+A <a href="https://www.npmjs.com/package/limiter">limiter</a> object, used to control the rate of collection. Optional. If unspecified, a rate limit of 30 requests a minute will be shared between Search streams. If you have a non-standard rate limit, you should pass this parameter.
+
+```js
+var RateLimiter = require('limiter').RateLimiter;
+// Allow 60 requests per minute
+var limiter = new RateLimiter(60, 'minute');
+
+var stream = new Gnip.Search({
+	rateLimiter : limiter,
+  ...
+});
+```
 ## API methods
 
 #### stream.start()
