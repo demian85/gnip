@@ -130,7 +130,7 @@ var RateLimiter = require('limiter').RateLimiter;
 // Allow 60 requests per minute
 var limiter = new RateLimiter(60, 'minute');
 
-var stream = new _gnip.Search({
+var stream = new Gnip.Search({
 	rateLimiter : limiter,
   ...
 });
