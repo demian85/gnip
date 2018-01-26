@@ -88,6 +88,7 @@ Clears cached rules.
 #### rules.live.add(Array rules, Function callback)
 #### rules.live.remove(Array rules, Function callback)
 #### rules.live.getAll(Function callback)
+#### rules.live.getByIds(Array ids, Function callback)
 #### rules.live.removeAll(Function callback)
 
 # Gnip.Search

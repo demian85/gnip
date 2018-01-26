@@ -1,5 +1,6 @@
 var Gnip = require('./lib/index');
 var async = require('async');
+var _ = require('underscore');
 
 var stream = new Gnip.Stream({
   url: 'https://stream.gnip.com:443/accounts/xxx/publishers/twitter/streams/track/dev.json',
@@ -35,7 +36,8 @@ rules.live.removeAll(function (err) {
     async.series([
       async.apply(test, ['ford', 'peugeot']),
       async.apply(test, ['peugeot']),
-      async.apply(test, ['volkswagen', 'audi', { value: 'ferrari' }])
+      async.apply(test, ['volkswagen', 'audi', { value: 'ferrari' }]),
+      async.apply(testGetRulesByIds)
     ], function (err) {
       if (err) throw err;
     });
@@ -66,5 +68,26 @@ function test(r, cb) {
         })
       }
     ], cb);
+  });
+}
+
+function testGetRulesByIds(cb) {
+  console.log('Testing get rules by id...');
+
+  rules.live.getAll(function (err, allRules) {
+    if (err) throw err;
+
+    if (_.isEmpty(allRules)) {
+      console.log('Could not execute test because no rules exist');
+      return cb();
+    }
+
+    var ids = [allRules[0].id];
+    rules.live.getByIds(ids, function (err, rules) {
+      if (err) throw err;
+      console.log('Live rules by id:');
+      console.log(rules);
+      cb();
+    });
   });
 }
