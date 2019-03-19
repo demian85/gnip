@@ -4,9 +4,6 @@
     "es6": true,
     "node": true
   },
-  "parserOptions": {
-
-  },
   "rules": {
     "no-console": 0
   }
