@@ -19,7 +19,7 @@
   ],
   "name": "gnip",
   "description": "Connect to Gnip streaming API and manage rules",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "keywords": [
     "gnip",
     "stream",
