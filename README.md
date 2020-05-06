@@ -61,6 +61,8 @@ GNIP Rules endpoint url e.g. `https://gnip-api.twitter.com/rules/${streamType}/a
 The batch size used when adding/deleting rules in bulk. (Defaults to 5000)
 - `parser`
 Much like the `parser` option allowed in the [Gnip Stream](https://github.com/demian85/gnip#gnipstream) constructor, you can pass a custom parser handler/library for incoming JSON data. This is optional, and defaults to the [json-bigint](https://www.npmjs.com/package/json-bigint) library. [More details](https://github.com/demian85/gnip#optionsparser).
+- `cacheFile`
+Internally `Gnip.Rules` uses a file for caching the current state of the rules configuration, the default path is in the directory of the package. This optional configuration allows you to change the path as the default one may cause problems in applications where `node_modules` is in a read-only filesystems (e.g. AWS Lambda).
 
 ## API methods
 
