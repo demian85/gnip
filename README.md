@@ -79,11 +79,12 @@ The callback receives an object as the 2nd argument and contains the number of a
 Clears cached rules.
 
 ### The following methods uses Gnip API directly and ignores the local cache. Avoid usage if you are working with too many rules!
-- `live.update(rules: Array, callback)`
-- `live.add(rules: Array, callback)`
-- `live.remove(rules: Array, callback)`
+- `live.update(rules: Array<(string|{value:string, tag:string})>, callback)`
+- `live.add(rules: Array<(string|{value:string, tag:string})>, callback)`
+- `live.remove(rules: Array<(string|{value:string, tag:string})>, callback)`
+- `live.removeByIds(ids: Array<string>, cb)`
 - `live.getAll(callback)`
-- `live.getByIds(ids: Array, callback)`
+- `live.getByIds(ids: Array<string>, callback)`
 - `live.removeAll(callback)`
 
 # Gnip.Search
