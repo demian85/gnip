@@ -37,7 +37,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "async": "0.1.x",
+    "async": "3.2.x",
     "json-bigint": "^0.2.3",
     "limiter": "^1.1.0",
     "request": "2.x",
